@@ -1,4 +1,4 @@
 {:paths ["src"]
- :deps  {}
+ :deps  {http-kit/http-kit {:mvn/version "2.7.0"}}
  :aliases 
  {:neil {:project {:name fast-http-server/fast-http-server}}}}

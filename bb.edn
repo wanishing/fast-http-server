@@ -1,0 +1,17 @@
+{:paths ["src" "."]
+ :deps {fast-http-server/fast-http-server {:local/root "."}}
+ :tasks {
+
+  lint {:doc "Run cljstyle & clj-kondo"
+        :task
+        (do
+          (shell "cljstyle fix --report src")
+          (shell "clj-kondo --lint src"))}
+
+  run-bb {:doc  "Run main from babashka"
+          :task (apply shell "bb" "--classpath" "src:resources" "--main" "fast-http-server.core" *command-line-args*)}
+
+  run-main {:doc  "Run main"
+            :task (apply clojure "-M -m fast-http-server.core" *command-line-args*)}
+
+  }}
